@@ -45,11 +45,11 @@ def check(text):
         return Checked(result=False)
 
     payload = {
-        'passportKey' : '811b5882e7d28f73ab675861bdc375dfac1889f8',
-        '_callback': 'jQuery112405063918866784873_1711092026267',
-        'q': text,
-        'color_blindness': '0'
-    }
+        'passportKey': '811b5882e7d28f73ab675861bdc375dfac1889f8',
+          '_callback': 'jQuery112401007368837934075_1711088196158',
+            'color_blindness': '0',
+            'q': text
+        }
 
     headers = {
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36',
@@ -61,9 +61,10 @@ def check(text):
     passed_time = time.time() - start_time
 
     # data = json.loads(r.text)
+    import re
     json_data = re.search(r'((.*))', r.text).group(1)
+    # Parse the JSON data into a Python dictionary
     data = json.loads(json_data)
-    html = data['message']['result']['html']
     result = {
         'result': True,
         'original': text,
